@@ -1,0 +1,16 @@
+diff -ruN tailscale_old/cmd/derper/cert.go tailscale/cmd/derper/cert.go
+--- tailscale_old/cmd/derper/cert.go	2024-12-07 22:55:16.798531677 +0800
++++ tailscale/cmd/derper/cert.go	2024-12-07 22:55:32.536446256 +0800
+@@ -94,9 +94,9 @@
+ }
+ 
+ func (m *manualCertManager) getCertificate(hi *tls.ClientHelloInfo) (*tls.Certificate, error) {
+-	if hi.ServerName != m.hostname && !m.noHostname {
+-		return nil, fmt.Errorf("cert mismatch with hostname: %q", hi.ServerName)
+-	}
++//	if hi.ServerName != m.hostname && !m.noHostname {
++//		return nil, fmt.Errorf("cert mismatch with hostname: %q", hi.ServerName)
++//	}
+ 
+ 	// Return a shallow copy of the cert so the caller can append to its
+ 	// Certificate field.
