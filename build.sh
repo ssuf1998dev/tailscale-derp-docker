@@ -17,5 +17,9 @@ git clone -b $__tag --depth=1 https://github.com/tailscale/tailscale.git tailsca
 if [ ! -f patches/$__tag.diff ]; then
   echo "[WARNING] No patch file found"
 else
+  if ! command -v patch >/dev/null 2>&1; then
+    apt update
+    apt install patch
+  fi
   patch -p0 <"patches/$__tag.diff"
 fi
