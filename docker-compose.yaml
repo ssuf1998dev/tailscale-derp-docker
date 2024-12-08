@@ -1,0 +1,15 @@
+services:
+  tailscale-derp:
+    image: <your_image>
+    container_name: tailscale-derp
+    restart: always
+    ports:
+      - "33445:33445"
+      - "33446:33446"
+      - "3478:3478/udp"
+    volumes:
+      - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
+    environment:
+      - DERP_ADDR=:33445
+      - DERP_HTTP_PORT=33446
+      - DERP_VERIFY_CLIENTS=true
